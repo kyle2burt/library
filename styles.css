@@ -51,6 +51,9 @@ header {
     align-items: center;
 }
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--white);
     padding: 10px;
 }
