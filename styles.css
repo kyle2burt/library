@@ -40,6 +40,10 @@ header {
     align-items: center;
     border: var(--black) 2px dashed;
     width: 200px;
+    background-color: white;
+}
+.add-book:hover {
+    background-color: #dde0e2;
 }
 .add-book .circle {
     border: var(--black) 2px solid;
