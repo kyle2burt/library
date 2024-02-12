@@ -12,9 +12,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: var(--white);
 }
 header {
-    background-color: var(--white);
+    color: var(--white);
+    background-color: var(--darkblue);
     padding: 20px;
 }
 .content {
@@ -38,15 +40,12 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: var(--black) 2px dashed;
+    border: var(--darkblue) 2px dashed;
     width: 200px;
-    background-color: white;
-}
-.add-book:hover {
-    background-color: #dde0e2;
+    background-color: var(--white);
 }
 .add-book .circle {
-    border: var(--black) 2px solid;
+    border: var(--darkblue) 2px dashed;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -54,10 +53,15 @@ header {
     justify-content: center;
     align-items: center;
 }
+.add-book:hover,
+.add-book:hover > .circle {
+    border: var(--darkblue) 2px solid;
+}
 footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--white);
+    color: var(--white);
+    background-color: var(--darkblue);
     padding: 10px;
 }
