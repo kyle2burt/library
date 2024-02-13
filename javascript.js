@@ -4,10 +4,10 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.read = read;
-        this.readString = this.#getReadString();
+        this.readString = this.getReadString();
     }
 
-    #getReadString() {
+    getReadString() {
         let readString = "Read";
         if (!this.read) readString = "Not Read Yet";
 
@@ -65,16 +65,24 @@ class Library {
 
         pageContent.insertBefore(bookCard, addBookButton);
 
+        this.#readBook(book, bookRead);
+
+        this.#removeBook(book, bookRemove);
+    }
+
+    #readBook(book, bookRead) {
         bookRead.addEventListener("click", () => {
             if (book.read) book.read = false;
             else book.read = true;
 
             bookRead.textContent = book.getReadString();
         });
+    }
 
+    #removeBook(book, bookRemove) {
         bookRemove.addEventListener("click", () => {
-            books.splice(books.indexOf(book), 1);
-            bookCard.remove();
+            this.#books.splice(this.#books.indexOf(book), 1);
+            bookRemove.parentElement.remove();
         });
     }
 
