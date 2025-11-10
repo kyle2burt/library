@@ -17,6 +17,9 @@ webpage.addEventListener('click', (event) => {
             newBook();
             modal.close();
             break;
+
+        case ('remove'):
+            removeBook(event.target.parentElement.dataset.id);
     }
 });
 
@@ -64,13 +67,18 @@ function drawBooks() {
         read.classList.add('read');
         read.textContent = book.readText();
 
+        const removeButton = document.createElement('button')
+        removeButton.setAttribute('id', 'remove');
+        removeButton.textContent = 'Remove';
+
         const bookElem = document.createElement('div');
         bookElem.classList.add('book');
-        bookElem.setAttribute('data-id', book.id);
+        bookElem.dataset.id = book.id;
         bookElem.appendChild(title);
         bookElem.appendChild(author);
         bookElem.appendChild(pages);
         bookElem.appendChild(read);
+        bookElem.appendChild(removeButton);
 
         pageLibrary.appendChild(bookElem);
     });
@@ -87,6 +95,12 @@ function newBook() {
     const form = document.querySelector('#new-book');
     const formData = new FormData(form);
     addBookToLibrary(formData.get('title'), formData.get('author'), formData.get('pages'), formData.has('read'));
+}
+
+function removeBook(id) {
+    const index = (myLibrary.map((book) => book.id).indexOf(id));
+    myLibrary.splice(index, 1);
+    drawBooks();
 }
 
 
