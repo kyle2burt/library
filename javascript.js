@@ -13,7 +13,9 @@ webpage.addEventListener('click', (event) => {
             break;
 
         case ('submit'):
+            event.preventDefault();
             newBook();
+            modal.close();
             break;
     }
 });
@@ -67,12 +69,14 @@ function drawBooks() {
         bookElem.appendChild(read);
 
         pageLibrary.appendChild(bookElem);
-
     });
 }
 
 function newBook() {
-
+    const form = document.querySelector('#new-book');
+    const formData = new FormData(form);
+    console.log(formData);
+    addBookToLibrary(formData.get('title'), formData.get('author'), formData.get('pages'), formData.has('read'));
 }
 
 
