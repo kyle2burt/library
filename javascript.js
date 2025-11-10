@@ -40,11 +40,12 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
+    drawBooks();
 }
 
 function drawBooks() {
     clearBooks();
-    
+
     const pageLibrary = document.querySelector('.library');
     myLibrary.forEach((book) => {
         const title = document.createElement('h4');
@@ -65,6 +66,7 @@ function drawBooks() {
 
         const bookElem = document.createElement('div');
         bookElem.classList.add('book');
+        bookElem.setAttribute('data-id', book.id);
         bookElem.appendChild(title);
         bookElem.appendChild(author);
         bookElem.appendChild(pages);
@@ -85,11 +87,9 @@ function newBook() {
     const form = document.querySelector('#new-book');
     const formData = new FormData(form);
     addBookToLibrary(formData.get('title'), formData.get('author'), formData.get('pages'), formData.has('read'));
-    drawBooks();
 }
 
 
 addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
-drawBooks();
 console.log(myLibrary);
 
