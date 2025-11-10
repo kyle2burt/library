@@ -43,6 +43,8 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function drawBooks() {
+    clearBooks();
+    
     const pageLibrary = document.querySelector('.library');
     myLibrary.forEach((book) => {
         const title = document.createElement('h4');
@@ -72,11 +74,18 @@ function drawBooks() {
     });
 }
 
+function clearBooks() {
+    const pageLibrary = document.querySelector('.library');
+    while (pageLibrary.lastElementChild) {
+        pageLibrary.removeChild(pageLibrary.lastElementChild);
+    }
+}
+
 function newBook() {
     const form = document.querySelector('#new-book');
     const formData = new FormData(form);
-    console.log(formData);
     addBookToLibrary(formData.get('title'), formData.get('author'), formData.get('pages'), formData.has('read'));
+    drawBooks();
 }
 
 
