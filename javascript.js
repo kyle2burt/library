@@ -17,3 +17,7 @@ function addBookToLibrary(title, author, pages, read) {
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
 }
+
+
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
+console.log(myLibrary);

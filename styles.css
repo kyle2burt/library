@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.sidebar {
+    background-color: aqua;
+}
+.library {
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    gap: 30px;
+}
+
+.book {
+    color: white;
+    background-color: #9c571b;
+    height: 300px;
+    padding: 30px;
+}
