@@ -20,6 +20,9 @@ webpage.addEventListener('click', (event) => {
 
         case ('remove'):
             removeBook(event.target.parentElement.dataset.id);
+
+        case ('read'):
+            toggleRead(event.target.parentElement.dataset.id);
     }
 });
 
@@ -35,9 +38,13 @@ function Book(title, author, pages, read) {
     }
 
     this.readText = function() {
-        if (read) return 'Read';
-        else return 'Not read';
+        if (this.read) return 'Read';
+        else return 'Unread';
     }
+}
+
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -71,6 +78,10 @@ function drawBooks() {
         removeButton.setAttribute('id', 'remove');
         removeButton.textContent = 'Remove';
 
+        const readButton = document.createElement('button');
+        readButton.setAttribute('id', 'read');
+        readButton.textContent = book.readText();
+
         const bookElem = document.createElement('div');
         bookElem.classList.add('book');
         bookElem.dataset.id = book.id;
@@ -79,6 +90,7 @@ function drawBooks() {
         bookElem.appendChild(pages);
         bookElem.appendChild(read);
         bookElem.appendChild(removeButton);
+        bookElem.appendChild(readButton);
 
         pageLibrary.appendChild(bookElem);
     });
@@ -100,6 +112,12 @@ function newBook() {
 function removeBook(id) {
     const index = (myLibrary.map((book) => book.id).indexOf(id));
     myLibrary.splice(index, 1);
+    drawBooks();
+}
+
+function toggleRead(id) {
+    const index = (myLibrary.map((book) => book.id).indexOf(id));
+    myLibrary[index].toggleRead();
     drawBooks();
 }
 
