@@ -1,4 +1,22 @@
 const myLibrary = [];
+const webpage = document.querySelector('body');
+
+webpage.addEventListener('click', (event) => {
+    const modal = document.querySelector('dialog');
+    switch(event.target.id) {
+        case ('open-modal'):
+            modal.showModal();
+            break;
+
+        case ('close-modal'):
+            modal.close();
+            break;
+
+        case ('submit'):
+            newBook();
+            break;
+    }
+});
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -52,18 +70,13 @@ function drawBooks() {
 
     });
 }
+
+function newBook() {
+
+}
+
+
 addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
 drawBooks();
 console.log(myLibrary);
 
-
-const modal = document.querySelector('dialog');
-const openModal = document.querySelector('#open-modal');
-const closeModal = document.querySelector('#close-modal');
-openModal.addEventListener('click', () => {
-    modal.showModal();
-});
-
-closeModal.addEventListener('click', () => {
-    modal.close();
-});
