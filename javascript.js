@@ -27,6 +27,7 @@ webpage.addEventListener('click', (event) => {
 });
 
 class Book {
+    id = crypto.randomUUID();
     constructor(title, author, pages, read) {
         this.title = title;
         this.author = author;
@@ -34,7 +35,7 @@ class Book {
         this.read = read;
     }
     info() {
-        return `${this.title} by ${this.author}, ${pages} pages, ${read}`;
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
     }
     readText() {
         if (this.read) return 'Read';
