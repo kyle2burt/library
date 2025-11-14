@@ -26,25 +26,23 @@ webpage.addEventListener('click', (event) => {
     }
 });
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = crypto.randomUUID();
-
-    this.info = function() {
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    info() {
         return `${this.title} by ${this.author}, ${pages} pages, ${read}`;
     }
-
-    this.readText = function() {
+    readText() {
         if (this.read) return 'Read';
         else return 'Unread';
     }
-}
-
-Book.prototype.toggleRead = function() {
-    this.read = !this.read;
+    toggleRead() {
+        this.read = !this.read;
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
